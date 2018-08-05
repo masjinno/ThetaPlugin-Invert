@@ -16,8 +16,12 @@
 
 package com.theta360.pluginapplication;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
+
+import com.theta360.pluginapplication.model.SimpleDateLogger;
 import com.theta360.pluginapplication.task.TakePictureTask;
 import com.theta360.pluginapplication.task.TakePictureTask.Callback;
 import com.theta360.pluginlibrary.activity.PluginActivity;
@@ -27,10 +31,16 @@ import com.theta360.pluginlibrary.values.LedColor;
 import com.theta360.pluginlibrary.values.LedTarget;
 
 public class MainActivity extends PluginActivity {
+    private SimpleDateLogger logger;
+
+    public MainActivity() {
+        logger = new SimpleDateLogger(this);
+    }
+
     private TakePictureTask.Callback mTakePictureTaskCallback = new Callback() {
         @Override
         public void onTakePicture(String fileUrl) {
-
+            logger.write("hogehoge".getBytes());
         }
     };
 
